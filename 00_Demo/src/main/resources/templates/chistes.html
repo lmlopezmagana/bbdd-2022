@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Ejemplo con Luismi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+	<h1>Chistes</h1>
+	<ul>
+		<li th:each="chiste : ${chistes}">			
+			<span th:text=${chiste}>Texto</span>
+		</li>
+	</ul>  
+  </body>
+
+</html>
