@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Ejemplo de Seguridad - Zona Pública</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Bienvenido a la zona pública</h1>
+    <a th:href="@{/private}">Zona privada</a> | <a th:href="@{/admin}">Zona admin</a>
+    <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
+    <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()">
+        <label for="username">Nombre de usuario: </label>
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario" autofocus="autofocus" /> <br />
+        <label for="password">Contraseña: </label>
+        <input type="password" name="password" id="password" placeholder="Contraseña" /> <br />
+        <input type="submit" value="Enviar" />
+    </form>
+    <div sec:authorize="isAuthenticated()">
+        <p sec:authentication="name">Nombre </p>
+        <a th:href="@{/logout}">Salir</a>
+    </div>
+</body>
+
+</html>

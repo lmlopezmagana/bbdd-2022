@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Ejemplo de Seguridad - Zona privada de usuario</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Bienvenido a la zona privada de usuario</h1>
+    <p th:text="${usuario}">Nombre de usuario</p>
+    <a th:href="@{/}">Zona pública</a> | <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Zona admin</a> | <a th:href="@{/logout}">Salir</a>
+</body>
+
+</html>

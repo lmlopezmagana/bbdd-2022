@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Ejemplo de Seguridad - Zona privada de administración</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Bienvenido a la zona privada de administración</h1>
+    <p th:text="${usuario}">Nombre de usuario</p>
+    <a th:href="@{/}">Zona pública</a> | <a th:href="@{/private}">Zona privada</a> | <a th:href="@{/logout}">Salir</a>
+</body>
+
+</html>
