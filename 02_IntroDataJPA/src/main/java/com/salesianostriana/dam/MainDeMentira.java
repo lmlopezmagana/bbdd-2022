@@ -16,9 +16,16 @@ public class MainDeMentira {
 	@PostConstruct
 	public void run() {
 		
+		/*
 		Alumno a = new Alumno();
 		a.setNombre("Luismi");
 		a.setApellidos("López");
+		*/
+		
+		Alumno a = Alumno.builder()
+				.nombre("Luismi")
+				.apellidos("López")
+				.build();
 		
 		
 		repo.save(a);

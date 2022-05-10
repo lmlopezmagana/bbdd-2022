@@ -1,10 +1,9 @@
-package com.salesianostriana.dam;
-
-import java.time.LocalDate;
+package com.salesianostriana.dam.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,16 +15,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Alumno {
+public class Curso {
 	
 	@Id @GeneratedValue
 	private long id;
 	
 	private String nombre;
 	
-	private String apellidos;
+	private int orden;
 	
-	private LocalDate fechaGraduacion;
-	
+	//private String tutor;
+	@OneToOne
+	private Profesor tutor;
 
 }

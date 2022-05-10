@@ -1,4 +1,4 @@
-package com.salesianostriana.dam;
+package com.salesianostriana.dam.modelo;
 
 import java.time.LocalDate;
 
@@ -16,16 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Alumno {
+public class Profesor {
 	
 	@Id @GeneratedValue
 	private long id;
 	
 	private String nombre;
 	
-	private String apellidos;
+	private LocalDate fechaContratacion;
 	
-	private LocalDate fechaGraduacion;
 	
 
 }
