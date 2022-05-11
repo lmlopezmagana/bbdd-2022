@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de alumnos</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Tutor</th>
+                <th>Curso</th>
+                <th>Fecha de graduación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="alumno : ${lista}">
+                <td th:text="${alumno.id}">Id</td>
+                <td th:text="${alumno.nombre}">Nombre</td>
+                <td th:text="${alumno.apellidos}">Apellidos</td>
+                <td th:text="${alumno.curso.tutor.nombre}">Tutor</td>
+                <td th:text="${alumno.curso.nombre}">Curso</td>
+                <td th:text="${#temporals.format(alumno.fechaGraduacion, 'dd/MMM/yyyy')}">12/12/2022</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
