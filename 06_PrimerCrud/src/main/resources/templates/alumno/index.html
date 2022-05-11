@@ -14,19 +14,15 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Tutor</th>
                 <th>Curso</th>
-                <th>Fecha de graduación</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="alumno : ${lista}">
-                <td th:text="${alumno.id}">Id</td>
+                <td><a th:href="@{/alumno/detalle/{id}(id=${alumno.id})}"><span th:text="${alumno.id}"></span></a></td>
                 <td th:text="${alumno.nombre}">Nombre</td>
                 <td th:text="${alumno.apellidos}">Apellidos</td>
-                <td th:text="${alumno.curso.tutor.nombre}">Tutor</td>
                 <td th:text="${alumno.curso.nombre}">Curso</td>
-                <td th:text="${#temporals.format(alumno.fechaGraduacion, 'dd/MMM/yyyy')}">12/12/2022</td>
             </tr>
         </tbody>
     </table>
