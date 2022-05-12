@@ -9,7 +9,8 @@
 
 <body>
     <h1>Bienvenido a la zona privada de administración</h1>
-    <p th:text="${usuario}">Nombre de usuario</p>
+    <p th:text="${usuario.nombre + ' ' + usuario.apellidos}">Nombre de usuario</p>
+    <img style="width: 96px" th:src="${usuario.avatar}" />
     <a th:href="@{/}">Zona pública</a> | <a th:href="@{/private}">Zona privada</a> | <a th:href="@{/logout}">Salir</a>
 </body>
 
