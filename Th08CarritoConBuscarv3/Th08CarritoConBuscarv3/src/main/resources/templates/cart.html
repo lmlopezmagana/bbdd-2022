@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://http://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Ejemplo de carrito de la compra</title>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="../static/css/starter-template.css"
+	th:href="@{/css/starter-template.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">My Shop</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="/">Home</a></li>
+					<li class="active"><a href="/carrito">Cart</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+<!-- Pintamos la tabla con los diferentes productos que se van añadiendo al carrito -->
+
+	<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th class="text-center">Precio</th>
+                        <th class="text-center">Subtotal</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                <!-- Bucle que va sacando los distintos elementos guardados en el carrito. 
+                Recordemos que es un HashMap cuya clave es un  producto 
+                y cuyo valor es la cantidad de productos, por eso
+                vamos sacando un elemento del carrito, esto significa que element, es tipo Entry, es decir,
+                pareja clave-valor "entera" (producto-cantidad), por todo esto, cuando queremos, por ejemplo, 
+                mostrar el nombre del producto, accedemos mediante: 
+                ${element.key.nombre} ya que sacamos la clave de la pareja "entry" que es un producto, 
+                y a su vez, accedemos al tributo nombre de ese producto -->
+                
+                    <tr th:each="element : ${products.entrySet()}">
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="#"> 
+                            	<img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;" th:src="${element.key.image}" /> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="#"><span th:text="${element.key.nombre}">Product name</span></a></h4>
+                                <h5 class="media-heading"> by <a href="#">Salesianos.com</a></h5>
+                                
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input class="form-control" id="inputQuantity" value="3" th:value="${element.value}" type="text" />
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong th:text="${element.key.pvp}">$4.87</strong></td>
+                        <!-- Como se puede ver en el manual de Th y hablamos en clase, en th se pueden hacer operaciones básicas con variables
+                        como en java, por lo que se puede multiplicar un valor por otro, como por ejemplo, aquí en precio por cantidad -->
+                        
+                        <td class="col-sm-1 col-md-1 text-center"><strong th:text="${element.key.pvp * element.value}">$14.61</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                        
+                        
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button></td>
+                    </tr>                    
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong th:text="${total_carrito}">100€</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                        </button></td>
+                        <td>
+                        <button type="button" class="btn btn-success">
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
