@@ -25,7 +25,8 @@ public class AdminController {
     	Optional<Usuario> elUsuario = usuarioRepo.findUserByUsername(user.getUsername());
     	// ESTO NO SE DEBE HACER ASÍ NUNCA. 
     	// ES SOLAMENTE POR MOTIVOS DIDÁCTICOS
-    	model.addAttribute("usuario", elUsuario.get());
+    	//model.addAttribute("usuario", elUsuario.get());
+        model.addAttribute("usuario", null);
         return "admin/index";
     }
 

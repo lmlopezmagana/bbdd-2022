@@ -13,10 +13,10 @@ public class PublicController {
 	}
 
 
-	@GetMapping("/error")
+	@GetMapping("/auth-error")
 	public String error() {
-		return "error";
+		return "auth-error";
 	}
-	
+
 
 }
